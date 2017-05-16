@@ -1,0 +1,143 @@
+<ion-header>
+  <ion-navbar color= "header_colour">
+    <ion-buttons end >
+      <button (click)="Signout()" ion-button icon-only style="color: #083C5E">
+        <ion-icon name="md-log-out"></ion-icon>
+      </button>
+    </ion-buttons> 
+    <ion-title >ASSORTER HOME</ion-title>
+      <ion-buttons end>
+         <button ion-button icon-only (click)="presentPopover($event)" >
+            <ion-icon name="more"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content style="background: #F6EFE5 ">
+
+<ion-card *ngFor="let mp of merchantProfile">
+  <div *ngIf="assorter_bookStatus =='waiting' ">
+  <ion-card-content>  
+  
+     
+  <table border="0" width="100%">
+    <tr>
+      <td width="70%" colspan="2">
+          <label style="font-size: 16px; margin: 5px"><b>Merchant Name &nbsp;&nbsp;:</b> {{mp.merchant_name}}</label><br><br>
+          <label style="font-size: 16px; margin: 5px"><b>Merchant Email :</b> {{mp.merchant_email}}  </label><br><br>
+          <label style="font-size: 16px; margin: 5px"><b>Hours &nbsp;:</b> {{mp.selected_hrs}} Hours </label><br><br>
+          <label style="font-size: 16px; margin: 5px"><b>Booking Time :</b> {{mp.booking_time}}  </label><br><br>
+          <label style="font-size: 16px; margin: 5px"><b>Category &nbsp;:</b> {{mp.category}} </label><br><br>
+      </td>   
+    </tr>
+    <tr>
+      <td align="center">
+        <button ion-button color="green" (click)="AcceptBooking(mp.category)">Accept</button>
+      </td>
+      <td align="center">
+        <button ion-button color="danger" (click)="CancleBooking(mp.category)">Reject&nbsp;</button>
+      </td>  
+    </tr>
+    <tr>
+      <!--<div *ngIf="mp.remaining_time=='00:00:01'" ><span "saverange()"></span> </div>-->
+      
+      <!--<div *ngFor="let dt of difftime">
+         <b>Remaining Time: {{dt.time}}</b>
+      </div>-->
+      <!--Time Count: {{ date | date:'jj:mm:ss' }} <br>-->
+     
+      
+    </tr> 
+  </table>
+  <br>
+   
+  <div class="alert alert-danger">
+       <strong style="color: #0DC45F;" *ngIf="mp.remaining_time>'00:00:10'">Remaining Time: {{mp.remaining_time}}</strong>
+       <strong style="color: #0DC45F;" *ngIf="mp.remaining_time<='00:00:10'" >Remaining Time:<span style="color: #ed5249;"> {{mp.remaining_time}}</span></strong> <br>
+      <strong>Warning!</strong> Accept Request within 2 minutes otherwise it gets deleted.
+    </div>
+  </ion-card-content>
+  </div>
+</ion-card>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  
+  
+    <ion-card pading *ngIf="assorter_bookStatus == 'no_booking'" style="border-radius: 20px;background-color: #e6ffe6;">
+      <ion-card-content>
+        <ion-row>
+          <ion-col col-3>
+          </ion-col>
+          <ion-col col-8>
+        <label style="text-align:center">No Booking For you</label>
+          </ion-col>
+         <ion-col col-1>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  
+
+
+    
+      <ion-card pading  *ngIf="assorter_bookStatus == 'booked'">
+      <ion-card-content>
+          <table width="100%" border="0">
+            <tr width="100%">
+            <td width="100px"><label style="font-size: 15px; padding-left: 5px"><b> Name</b></label></td>
+            <td>: {{bookmerchantProfile.merchant_name}}</td>
+          </tr>
+           <tr width="100%">
+            <td width="100px"><label style="font-size: 15px; padding-left: 5px"><b> Email</b></label></td>
+            <td>: {{bookmerchantProfile.merchant_email}}</td>
+          </tr>
+          <tr width="100%">
+            <td width="100px"><label style="font-size: 15px; padding-left: 5px"><b> Mobile</b></label></td>
+            <td>: {{bookmerchantProfile.merchant_mobile}}</td>
+          </tr>
+         <tr width="100%">
+            <td width="100px"><label style="font-size: 15px; padding-left: 5px"><b> Selected Hours</b></label></td>
+            <td>: {{bookmerchantProfile.selected_hrs}}</td>
+          </tr>
+          <tr width="100%">
+            <td width="100px"><label style="font-size: 15px; padding-left: 5px"><b> Category</b></label></td>
+            <td>: {{bookmerchantProfile.category}}</td>
+          </tr>
+          <tr width="100%">
+            <td width="100px"><label style="font-size: 15px; padding-left: 5px"><b> Work Address</b></label></td>
+            <td>: {{bookmerchantProfile.work_address}}</td>
+          </tr><br>
+          </table>
+           <div *ngIf='jobcode=="job_started"'><button ion-button full (click)="JobStart(bookmerchantProfile)">Job Start</button></div>
+               <div *ngIf="jobcode=='job_done'" ><button ion-button full (click)="JobDone()">Job Done</button></div>
+      </ion-card-content>
+    </ion-card>
+
+  <!--<ion-card >
+    
+    <ion-card-content *ngFor="let response of merchantProfile" *ngIf="assorter_bookStatus == 'unpaid'">
+        <p>Payment of Rs. {{response.total_price}} Remaining</p> from {{response.merchant_name}} merchant of category {{response.selected_category}} 
+    </ion-card-content>
+  </ion-card>-->
+
+   <ion-card style="border-radius: 20px;background-color: #e6ffe6;" *ngIf="assorter_bookStatus == 'unpaid'">
+    
+    <ion-card-content *ngFor="let response of merchantProfile">
+      <ion-row>
+        <ion-col col-3>
+          <img src="img/warning.png" style="height:50px;width:50px;">
+        </ion-col>
+         <ion-col col-9>
+        <p>Payment of Rs.<b style="color:#083C5E;">{{response.total_price}}</b>  Remaining</p> 
+        from  <b style="color:#083C5E;">{{response.merchant_name}}
+          </b> of category <b style="color:#083C5E;">{{response.selected_category}} </b>
+         </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  </ion-content>

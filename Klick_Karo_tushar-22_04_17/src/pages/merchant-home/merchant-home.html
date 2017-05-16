@@ -1,0 +1,179 @@
+<!--
+  Generated template for the MerchantHome page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color= "header_colour">
+    <ion-buttons end >
+      <button (click)="Signout()" ion-button icon-only style="color: #083C5E">
+        <ion-icon name="md-log-out"></ion-icon>
+      </button>
+            
+         <button ion-button icon-only (click)="presentPopover($event)" >
+            <ion-icon name="more"></ion-icon>
+        </button>
+   
+    </ion-buttons>
+    <ion-title >HOME</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style="background: #F6EFE5 ">  
+  <ion-slides #promoSlider [options]="homeOptions"  style="height: 200px;">
+    <ion-slide>
+      <img src="img/1.jpg"  >
+    </ion-slide>
+    <ion-slide>
+      <img src="img/2.jpg" >
+    </ion-slide>
+    <ion-slide>
+      <img src="img/3.jpg"  >
+    </ion-slide>
+    <ion-slide>
+      <img src="img/4.jpg" >
+    </ion-slide>
+    <ion-slide>
+      <img src="img/verified.png" >
+    </ion-slide>
+  </ion-slides>
+  <table border="2" align="center" width="100%" bordercolor="#f2f2f2" style="margin-top: 5px;">
+    <tr>
+      <td width="33.3%" style="background:#FFFFFF" align="center">
+        <table border="0"  style="width:100%;height:100%" (click)="bookAssorter('000')" >
+          <tr>
+            <td align="center" height="40px" width="100%">
+              <img src="img/glass.png" style="width:37px;height:37px;margin:10px"  ></td>
+            </tr>
+            <tr>
+              <td align="center" height="20px">
+                <label style="font-size: 12px; text-align: center; padding-top: 5px;">000</label>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td width="33.3%" style="background:#FFFFFF" align="center">
+
+          <table border="0"  style="width:100%;height:100%" (click)="bookAssorter('00')">
+            <tr>
+              <td align="center" height="40px" width="100%">
+                <img src="img/glass.png" style="width:37px;height:37px;margin:10px" ></td>
+              </tr>
+              <tr>
+                <td align="center" height="20px">
+                  <label style="font-size: 12px; text-align: center; padding-top: 5px;">00</label>
+                </td>
+              </tr>
+            </table>
+
+          </td>
+          <td width="33.3%" style="background:#FFFFFF" align="center">
+
+            <table border="0"  style="width:100%;height:100%" (click)="bookAssorter('-2')">
+              <tr>
+                <td align="center" height="40px" width="100%">
+                  <img src="img/glass.png" style="width:37px;height:37px;margin:10px" ></td>
+                </tr>
+                <tr>
+                  <td align="center" height="20px">
+                    <label style="font-size: 12px; text-align: center; padding-top: 5px;">(-2)</label>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+          <tr>
+            <td width="33.3%" style="background:#FFFFFF" align="center">
+              <table border="0"  style="width:100%;height:100%" (click)="bookAssorter('+2')">
+                <tr>
+                  <td align="center" height="40px" width="100%">
+                    <img src="img/glass.png" style="width:37px;height:37px;margin:10px" ></td>
+                  </tr>
+                  <tr>
+                    <td align="center" height="20px">
+                      <label style="font-size: 12px; text-align: center; padding-top: 5px;">(+2)</label>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td width="33.3%" style="background:#FFFFFF" align="center">
+
+                <table border="0"  style="width:100%;height:100%" (click)="bookAssorter('STAR')">
+                  <tr>
+                    <td align="center" height="40px" width="100%">
+                      <img src="img/glass.png"  style="width:37px;height:37px;margin:10px" ></td>
+                    </tr>
+                    <tr>
+                      <td align="center" height="20px">
+                        <label style="font-size: 12px; text-align: center; padding-top: 5px;">STAR</label>
+                      </td>
+                    </tr>
+                  </table>
+
+                </td>
+                <td width="33.3%" style="background:#FFFFFF" align="center">
+
+                  <table border="0"  style="width:100%;height:100%" (click)="bookAssorter('MELLE')">
+                    <tr>
+                      <td align="center" height="40px" width="100%">
+                        <img src="img/glass.png" style="width:37px;height:37px;margin:10px" ></td>
+                      </tr>
+                      <tr>
+                        <td align="center" height="20px">
+                          <label style="font-size: 12px; text-align: center; padding-top: 5px;">MELLE</label>
+                        </td>
+                      </tr>
+                    </table>
+
+                  </td>
+                </tr>
+                <tr>
+                  <td width="33.3%" style="background:#FFFFFF" align="center">
+                    <table border="0"  style="width:100%;height:100%" (click)="bookAssorter('[+11]')">
+                      <tr>
+                        <td align="center" height="40px" width="100%">
+                          <img src="img/glass.png" style="width:37px;height:37px;margin:10px" ></td>
+                        </tr>
+                        <tr>
+                          <td align="center" height="20px">
+                            <label style="font-size: 12px; text-align: center; padding-top: 5px;">[+11]</label>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                    <td width="33.3%" style="background:#FFFFFF" align="center">
+
+                      <table border="0"  style="width:100%;height:100%" (click)="bookAssorter('FANCY SHAPES')">
+                        <tr>
+                          <td align="center" height="40px" width="100%">
+                            <img src="img/glass.png" style="width:37px;height:37px;margin:10px" ></td>
+                          </tr>
+                          <tr>
+                            <td align="center" height="20px">
+                              <label style="font-size: 12px; text-align: center; padding-top: 5px;">FANCY SHAPES</label>
+                            </td>
+                          </tr>
+                        </table>
+
+                      </td>
+                      <td width="33.3%" style="background:#FFFFFF" align="center">
+
+                        <table border="0"  style="width:100%;height:100%" (click)="bookAssorter('SINGLE CUT')">
+                          <tr>
+                            <td align="center" height="40px" width="100%">
+                              <img src="img/glass.png" style="width:37px;height:37px;margin:10px" ></td>
+                            </tr>
+                            <tr>
+                              <td align="center" height="20px">
+                                <label style="font-size: 12px; text-align: center; padding-top: 5px;">SINGLE CUT</label>
+                              </td>
+                            </tr>
+                          </table>
+
+                        </td></tr></table>
+
+                      </ion-content>

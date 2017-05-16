@@ -1,0 +1,158 @@
+<ion-header>
+  <ion-navbar color= "header_colour">
+    <ion-buttons end (click)="Signout()">
+      <!--<button ion-button icon-only style="color: #083C5E">
+        <ion-icon name="md-log-out"></ion-icon>
+      </button>-->
+    </ion-buttons>
+    <ion-title >ASSORTER HISTORY</ion-title>
+       <ion-buttons end>
+         <button ion-button icon-only (click)="presentPopover($event)" >
+            <ion-icon name="more"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content style="background: #F6EFE5 " >
+  
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+<ion-card  *ngFor="let post of history_assorter">
+
+     <ion-card-content>
+    <table border="0" width="98%">
+      <tr>
+        <td aligh="left" width="50%">
+         <h3> {{post.assorter_name}} </h3>
+        </td>
+        <td align="right" width="50%">
+          <h3> {{post.assorter_email}} </h3>
+        </td>
+      </tr>
+    </table>
+    
+    
+    <!--<p><label style=" width: 50px;"> Categories </label> {{post.selected_category}} </p>
+    <p>Categories Price : {{post.address}} </p>
+    <p>Hours : {{post.selected_hours}} </p>
+    <p>Extra Hours: {{post.Extra_work_hrs}} </p>
+    <p>Start Time  : {{post.time_start}} </p>
+    <p>End Time : {{post.time_end}} </p>-->
+
+    <table border="0" width="98%">
+      <tr>
+        <td aligh="left" width="40%">
+         <p> <b>Category</b>  </p>
+        </td>
+        <td >
+          <p>: &nbsp;&nbsp;{{post.selected_category}} </p>
+        </td>
+      </tr>
+    </table>
+
+    <table border="0" width="98%">
+      <tr>
+        <td aligh="left" width="40%">
+         <p> <b> Price  </b> </p>
+        </td>
+        <td >
+          <p>: &nbsp;&nbsp;{{post.total_price}} </p>
+        </td>
+      </tr>
+    </table>
+
+    <table border="0" width="98%">
+      <tr>
+        <td aligh="left" width="40%">
+         <p><b> Hours </b>  </p>
+        </td>
+        <td >
+          <p>: &nbsp;&nbsp;{{post.selected_hours}} </p>
+        </td>
+      </tr>
+    </table>
+
+    <table border="0" width="98%">
+      <tr>
+        <td aligh="left" width="40%">
+         <p><b> Extra Hours </b>  </p>
+        </td>
+        <td >
+          <p>: &nbsp;&nbsp;{{post.Extra_work_hrs}} </p>
+        </td>
+      </tr>
+    </table>
+
+    <table border="0" width="98%">
+      <tr>
+        <td aligh="left" width="40%">
+         <p> <b>Start Time </b></p>
+        </td>
+        <td >
+          <p>: &nbsp;&nbsp;{{post.time_start}} </p>
+        </td>
+      </tr>
+    </table>
+
+    <table border="0" width="98%">
+      <tr>
+        <td aligh="left" width="40%">
+         <p> <b>End Time</b> </p>
+        </td>
+        <td >
+          <p>: &nbsp;&nbsp;{{post.time_end}}</p>
+        </td>
+      </tr>
+    </table>
+
+    <table border="0" width="98%">
+      <tr>
+        <td aligh="left" width="40%">
+         <p> <b>Working address</b> </p>
+        </td>
+        <td >
+          <p>: &nbsp;&nbsp;{{post.work_address}}</p>
+        </td>
+      </tr>
+    </table>
+
+    <table border="0" width="98%">
+      <tr>
+       <td aligh="left" width="40%">
+         <p><b>Total Price</b> </p>
+        </td>
+        <td >
+          <p>: &nbsp;&nbsp;{{post.total_price}} </p>
+        </td>
+      </tr>
+    </table>
+
+    <table border="0" width="98%">
+      <tr>
+       <td aligh="left" width="40%">
+         <p><b>Payment Status</b> </p>
+        </td>
+        <td >
+          <p>: &nbsp;&nbsp;{{post.payment_status}} </p>
+        </td>
+      </tr>
+    </table>
+    
+    <table border="0" width="98%" *ngIf="post.payment_status=='paid'">
+      <tr>
+       <td aligh="left" width="40%">
+         <p><b>Payment Mode</b> </p>
+        </td>
+        <td >
+          <p>: &nbsp;&nbsp;{{post.payment_mode}} </p>
+        </td>
+      </tr>
+    </table>
+
+     </ion-card-content>
+   </ion-card>
+ 
+</ion-content>

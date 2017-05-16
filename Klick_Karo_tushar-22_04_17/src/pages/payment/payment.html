@@ -1,0 +1,104 @@
+<!--
+  Generated template for the Payment page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color= "header_colour">
+    <ion-title>PAYMENT HISTORY</ion-title>
+           <ion-buttons end>
+         <button ion-button icon-only (click)="presentPopover($event)" >
+            <ion-icon name="more"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+  
+</ion-header>
+
+
+<ion-content padding style="background: #F6EFE5 ">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+ <div *ngFor="let p of payment">
+   <ion-card>
+  <ion-card-content>
+      <table border="0" width="100%">
+      <tr>
+        <td aligh="left" width="60%">
+         <p>  <b> Assorter Name</b>  </p>
+        </td>
+        <td >
+          <p>: &nbsp;&nbsp;{{p.assorter_name}} </p>
+        </td>
+      </tr>
+    
+      <tr>
+        <td aligh="left" width="60%">
+         <p>  <b>Assorter Email</b>  </p>
+        </td>
+        <td >
+          <p>: &nbsp;&nbsp;{{p.assorter_email}} </p>
+        </td>
+      </tr>
+
+      <tr>
+        <td aligh="left" width="60%">
+         <p>  <b>Assorter Mobile</b>  </p>
+        </td>
+        <td >
+          <p>: &nbsp;&nbsp;{{p.assorter_mobile}} </p>
+        </td>
+      </tr>
+        <tr>
+        <td aligh="left" width="60%">
+         <p>  <b>Merchant Email</b>  </p>
+        </td>
+        <td >
+          <p>: &nbsp;&nbsp;{{p.merchant_email}} </p>
+        </td>
+      </tr>
+      <tr>
+        <td aligh="left" width="60%">
+         <p>  <b>Selected Category</b>  </p>
+        </td>
+        <td >
+          <p>: &nbsp;&nbsp;{{p.selected_category}} </p>
+        </td>
+      </tr>
+   
+      <tr>
+        <td aligh="left" width="60%">
+         <p>  <b>Payment Status</b>  </p>
+        </td>
+        <td >
+          <p>: &nbsp;&nbsp;{{p.payment_status}} </p>
+        </td>
+      </tr>
+   
+      <tr>
+        <td aligh="left" width="60%">
+         <p>  <b>Total Price</b>  </p>
+        </td>
+        <td >
+          <p>: &nbsp;&nbsp;{{p.total_price}} </p>
+        </td>
+      </tr>
+    </table>
+
+  <label *ngIf="p.payment_status=='unpaid' && payment_code==false" style="color: #fff">Pay using</label>
+   <div *ngIf="p.payment_status=='unpaid' && payment_code==false" class="register-switch">
+                <input type="radio" [(ngModel)]="paymode" name="paymode" value="CASH" id="paymode_cash" class="register-switch-input" >
+                  <label for="paymode_cash" class="register-switch-label">Cash</label>
+                  <input type="radio" name="paymode" value="OTHER" id="paymode_other" class="register-switch-input" [(ngModel)]="paymode">
+                  <label for="paymode_other" class="register-switch-label">Other Mode</label>
+  </div><br>
+   <div *ngIf="p.payment_status=='paid'  || payment_code==true" align="center"> <img src="img/sucess.png" style="width: 40px; height: 40px;" ><b>Payment Done Successfully.</b></div>
+   <div *ngIf="p.payment_status=='unpaid' && payment_code==false"><button ion-button full (click)="pay(p,paymode)">Pay</button></div> 
+   </ion-card-content>
+</ion-card>
+ </div>
+
+</ion-content>

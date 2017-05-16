@@ -1,0 +1,110 @@
+
+<ion-header>
+
+  <ion-navbar color="no">
+    <ion-title>LOGIN</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content  style="background: url(img/bg1.png); background-size: 100% 100%">
+<div style="height: 2px">
+</div>
+      <!--<form  [formGroup]="myForm" novalidate (ngSubmit)="login(myForm)">
+            <input type="text" formControlName="uname" placeholder="USERNAME">
+            <input type="password" formControlName="upass" placeholder="PASSWORD">
+            <input type="submit" value="Login">
+      </form>  -->
+
+
+
+    <table border="0" width="90%" align="center" >
+  <tr>
+    <td align="center" valign="middle" colspan="2">
+        
+
+        <div style="height: 10px">
+        </div>
+       <table border="0" width="230px" height="100px" >
+         <tr>
+           <td align="center">
+        <img src="img/kk-screen.png" style="width: 450px; height: 200px; margin-left: 5px">
+           </td>
+         </tr>
+       </table>
+        <br>
+     <!--<label style="color: #fff">KlickKaro</label>-->
+    </td>
+  </tr>
+  </table>
+<div style="height: 40px">
+</div>
+  <form  [formGroup]="myForm" novalidate (ngSubmit)="login(myForm)">
+
+   <table border="0" width="96%" height="40px" style=" border: 1px solid #fff; border-radius: 3px; " align="center">
+     
+          <tr>
+            <td align="left">
+
+              <input type="text" placeholder="USERNAME" style="border: none;background: transparent; padding-left: 20px; color: #fff; width: 100%" formControlName="uname">
+            </td>
+          </tr>
+    </table>
+    <div style="height: 5px">
+    </div>
+    <table border="" width="96%" height="40px" style=" border: 1px solid #fff; border-radius: 3px" align="center">
+          <tr>
+            <td align="left">
+              <input  type={{showpass}} placeholder="PASSWORD"  style="border: none;background: transparent; padding-left: 20px; color: #fff ; width: 100%" formControlName="upass">  
+            
+            </td>
+          </tr>
+    </table>
+
+   <table width="100%" border="0">
+        <tr >
+          <td  padding width="10px;">
+             <ion-checkbox   class="showpassword " color="dark"  checked="false" (click)="showPassword(showpass)"></ion-checkbox>
+          </td>
+          <td>
+             <span  style="color:#ffffff ">Show Password</span>
+          </td> 
+        </tr>  
+   </table>   
+
+
+    <!--<ion-row padding>
+      <ion-col col-1>
+          <ion-checkbox   class="showpassword " color="dark"  checked="false" (click)="showPassword(showpass)"></ion-checkbox>
+      </ion-col>
+       <ion-col col-11>
+            <span  style="color:#ffffff ">Show Password</span>
+      </ion-col>  
+    </ion-row> -->
+          
+            
+     
+ 
+    <div style="height: 15px">
+    </div>
+    <!--<table border="0" width="96%" height="40px" style=" border-radius: 3px; background: #fff " align="center" type="submit">
+          <tr>
+            <td align="center">
+
+              <label style="text-transform: uppercase; font-size: 14px ;border-radius: 3px;">Login</label>
+
+
+            </td>
+          </tr>
+    </table>-->
+    <table border="0" align="center" width="100%">
+      <tr>
+        <td align="center">
+    <input type="submit" value="Login" style="width: 96%; height: 40px;border: 1px solid #fff; border-radius: 3px; font-size: 14px; background: #fff" >
+        </td>
+      </tr>
+    </table>
+    	<p  style="text-align: right;" padding align="right"(click)="forgotpass()" style="color:#ffffff ">Forgot Password ?</p>
+</form> 
+</ion-content>

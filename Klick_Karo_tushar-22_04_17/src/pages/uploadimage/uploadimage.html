@@ -1,0 +1,80 @@
+<!--
+  Generated template for the Uploadimage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="no">
+    <ion-title>UPLOAD IMAGE</ion-title>
+           <ion-buttons end>
+         <button ion-button icon-only (click)="presentPopover($event)" >
+            <ion-icon name="more"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding style="background: url(img/blueback.png)">
+<label style="color: red"> *</label> <label style="color: #fff; font-size: 11px"> File Should be in .jpg format and less than 500 Kb</label>
+
+<!--
+  <table border="0" align="center" style="width: 130px; border-radius: 50%; background: #fff; height: 130px" (click)="uploadResume('profile')">
+    <tr>
+      <td align="center" valign="middle">
+        <label style="font-size: 14px; color: #23566B; text-transform: uppercase"><b> Upload<br>Profile Pic</b></label>
+        
+      </td>
+    </tr>
+  </table>
+  <br>
+<table border="0" align="center" style="width: 130px; border-radius: 50%; background: #fff; height: 130px" (click)="uploadResume('pv')">
+    <tr>
+      <td align="center" valign="middle">
+        <label style="font-size: 14px; color: #23566B; text-transform: uppercase"><b> upload<br>id proof</b></label>
+        
+      </td>
+    </tr>
+  </table>
+  <br>
+  <table border="0" align="center" style="width: 130px; border-radius: 50%; background: #fff; height: 130px" (click)="uploadResume('idp')">
+    <tr>
+      <td align="center" valign="middle">
+        <label style="font-size: 14px; color: #23566B; text-transform: uppercase"><b> upload<br>police Verification</b></label>
+        
+      </td>
+    </tr>
+  </table>-->
+  
+
+  <table border="0" align="center">
+    <tr>
+      <!--<td align="center"><br><input type="submit" class="buttonKlick" (click)="uploadResume('profile')" value="Profile"  style="background: url(https://s-media-cache-ak0.pinimg.com/736x/0a/39/1f/0a391ff95f731673bea99f40ca25ba46.jpg); background-position: center; background-size: 100% 100%"/></td>-->
+      <td align="center"><br>
+        <img src={{profile_image}} class="buttonKlick " ><br>
+        <button ion-button (click)="uploadResume1('profile')" style="background-position: center; background-size: 100% 100%">Click to Upload Profile Picture </button>   
+      </td>
+    </tr>
+    <tr>
+      <td align="center"><br><img src={{police_image}} class="buttonKlick " ><br>
+        <button ion-button (click)="uploadResume2('pv')" style="background-position: center; background-size: 100% 100%">Click to Upload Police Vefification Proof </button>
+      </td>  
+    </tr>
+    <tr>
+      <td align="center"><br>
+        <img src={{id_image}} class="buttonKlick " ><br>
+        <button ion-button (click)="uploadResume3('idp')" style="background-position: center; background-size: 100% 100%">Click to Upload ID Proof </button>
+      </td>
+    </tr>
+  </table>
+  
+   
+   
+   
+
+  
+   <button ion-button full (click)="LoginSelectionPage()" color="no" style="border: 1px solid #fff; margin-top: 5px">FINISH</button>
+</ion-content>

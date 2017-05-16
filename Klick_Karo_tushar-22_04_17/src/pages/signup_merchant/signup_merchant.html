@@ -1,0 +1,63 @@
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<ion-header>
+  <ion-navbar color="no">
+    <ion-title>
+      MERCHANT SIGNUP
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content  style="background: url(img/bg1.png); background-size: 100% 100%" padding>
+
+<form>
+   <div class="form-group">
+    <label style="color: #fff">Name</label>
+    <input type="text" class="form-control" [(ngModel)]="data.name" name="name"/> 
+  </div>
+  <div class="form-group">
+    <label style="color: #fff">Email</label>
+    <input type="text" class="form-control" [(ngModel)]="data.email" name="mail "/> 
+  </div>
+  
+  <div class="form-group">
+    <label style="color: #fff">Password</label>
+    <input type="password" class="form-control" [(ngModel)]="data.password" name="password" /> 
+  </div>
+  <div class="form-group">
+    <label style="color: #fff">Confirm Password</label>
+    <input type="password" class="form-control" [(ngModel)]="data.conform_password" name="conform_password"/> 
+  </div>
+   <div class="form-group">
+    <label style="color: #fff">Address</label>
+    <input type="text" class="form-control" [(ngModel)]="data.address" name="address"/> 
+  </div>
+  <div class="form-group">
+    <label style="color: #fff">Mobile No </label>
+    <input type="number" class="form-control" [(ngModel)]="data.mobile_no" name="mobile_no"/> 
+  </div>
+  <div class="form-group">
+    <label style="color: #fff">Gender</label>
+   <div class="register-switch">
+                <input type="radio" [(ngModel)]="data.gender" name="sex" value="Female" id="sex_f" class="register-switch-input" >
+                  <label for="sex_f" class="register-switch-label">Female</label>
+                  <input type="radio" name="sex" value="Male" id="sex_m" class="register-switch-input" [(ngModel)]="data.gender">
+                  <label for="sex_m" class="register-switch-label">Male</label>
+                </div>
+  </div>
+  
+   
+   
+
+     <div class="form-group">
+    <button ion-button full (click)="next(data)" color="no" style="border: 1px solid #fff">Register</button>
+  </div>
+</form>
+</ion-content>

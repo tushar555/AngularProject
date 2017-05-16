@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-navbar color= "header_colour">
+    <ion-buttons end (click)="Signout()">
+      <!--<button ion-button icon-only style="color: #083C5E">
+        <ion-icon name="md-log-out"></ion-icon>
+      </button>-->
+    </ion-buttons>
+    <ion-title>MY PROFILE</ion-title>
+           <ion-buttons end>
+         <button ion-button icon-only (click)="presentPopover($event)" >
+            <ion-icon name="more"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+<ion-content style="background: #F6EFE5 ">
+  
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-grid>
+      <ion-row>
+
+        <ion-col col-4 align="center" valign="center" *ngIf="assorter_profile.profile_pic!=''">
+          <img src="{{assorter_profile.profile_pic}}"  style="border-radius: 50%; height: 70px; width: 70px">
+        </ion-col>
+
+        <ion-col col-4 align="center" valign="center" *ngIf="assorter_profile.profile_pic==''">
+          <img src="img/not_profile.png"  style="border-radius: 50%; height: 70px; width: 70px">
+        </ion-col>
+
+         <ion-col col-8><table border="0" width="100%" align="center" >
+  
+
+  <tr>
+    <td width="100px"><label style="font-size: 15px; padding-left: 5px"><b> Name</b></label></td>
+    <td>: {{assorter_profile.name}}</td>
+  </tr>
+
+  <tr>
+    <td ><label style="font-size: 15px; padding-left: 5px"><b> Mobile</b></label></td>
+    <td>: {{assorter_profile.mobile}}</td>
+  </tr>
+ <tr>
+    <td ><label style="font-size: 15px; padding-left: 5px"><b> Email</b></label></td>
+    <td>: {{assorter_profile.email}}</td>
+  </tr>
+  <tr>
+    <td ><label style="font-size: 15px; padding-left: 5px"><b> Gender</b></label></td>
+    <td>: {{assorter_profile.gender}}</td>
+  </tr>
+
+  <tr>
+    <td ><label style="font-size: 15px; padding-left: 5px"><b> Experiance</b></label></td>
+    <td>: {{assorter_profile.name}}+ <br></td>
+  </tr>
+
+ 
+  </table>
+  </ion-col>
+      </ion-row>
+      <ion-row>
+        <table>
+           <tr>
+    <td ><label style="font-size: 15px; padding-left: 5px"><b> Address</b></label></td>
+    <td>: {{assorter_profile.address}}</td>
+  </tr>
+        </table>
+      </ion-row>
+</ion-grid>
+    </ion-card-content>
+  </ion-card>
+ <ion-card>
+    <span *ngIf="assorter_profile.id_proof!=''"><img src="{{assorter_profile.id_proof}}" style="height:220px;"></span>
+    <span *ngIf="assorter_profile.id_proof==''"><img src="img/imageNotFound.png" style="height:220px;"></span>
+    <ion-card-content  align="center">
+      <b>ID PROOF</b>
+      </ion-card-content>
+ </ion-card>
+  <ion-card>
+      <span *ngIf="assorter_profile.police_verification!=''"><img src="{{assorter_profile.police_verification}}" style="height:220px;"  ></span>
+    <span *ngIf="assorter_profile.police_verification==''"><img src="img/imageNotFound.png" style="height:220px;"></span>
+      <ion-card-content  align="center">
+      <b>Police Verification</b>
+      </ion-card-content>
+ </ion-card>
+</ion-content>

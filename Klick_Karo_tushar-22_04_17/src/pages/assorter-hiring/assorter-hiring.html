@@ -1,0 +1,96 @@
+<!--
+  Generated template for the AssorterHiring page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color= "header_colour">
+    <ion-title>ASSORTER HIRING</ion-title>
+       <ion-buttons end>
+      <!--<button ion-button icon-only color="royal">
+        <ion-icon name="settings"></ion-icon>
+      </button>-->
+         <button ion-button icon-only (click)="presentPopover($event)" >
+  <ion-icon name="more"></ion-icon>
+</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style="background: #F6EFE5 ">
+
+    <ion-card>
+        <ion-card-header>
+          <label>Selected Category :</label> {{category}}
+          
+        </ion-card-header>
+          
+        <ion-list>
+        
+           <ion-card-content>
+             <div class="form-group">
+               <label> Office details</label>
+               <input class="form-control" type="text" [(ngModel)]="ofcdetails" placeholder="e.g.office no/office name">
+             </div>
+              <div class="form-group">
+               <label>  Area/street </label>
+               <input class="form-control" type="text" [(ngModel)]="area" placeholder="e.g.area/street name">
+             </div>
+            <div class="form-group">
+               <label>  Landmark </label>
+               <input class="form-control" type="text" [(ngModel)]="landmark" placeholder="e.g.Landmark">
+             </div>
+              <div class="form-group">
+               <label> City with Pincode</label>
+               <input class="form-control" type="text" [(ngModel)]="citypin" placeholder="e.g. City-6 digit pincode">
+             </div>
+             <br>
+             <ion-item style="border:1px solid #cccccc;border-radius: 5px;height: 12px">
+            
+  <ion-label><b>Select No of hours</b></ion-label>
+          
+   <ion-select style="margin-right :10px;" [(ngModel)]="selectedHRS">
+          <ion-option value="1" selected>1 Hours</ion-option>
+          <ion-option value="2">2 Hours</ion-option>
+          <ion-option value="3">3 Hours</ion-option>
+          <ion-option value="4">4 Hours</ion-option>
+          <ion-option value="5">5 Hours</ion-option>
+          <ion-option value="6">6 Hours</ion-option>
+          <ion-option value="7">7 Hours</ion-option>
+          <ion-option value="8">8 Hours</ion-option>
+          <ion-option value="9">9 Hours</ion-option>
+          <ion-option value="10">10 Hours</ion-option>
+        </ion-select>
+         
+             </ion-item>
+            
+              <!--Office details    :  <input type="text" [(ngModel)]="ofcdetails" placeholder="e.g.office no/office name">  <br>
+              Area/street       :  <input type="text" [(ngModel)]="area" placeholder="e.g.area/street name">  <br> 
+              City with Pincode :  <input type="text" [(ngModel)]="citypin" placeholder="e.g. City-6 digit pincode"><br>-->
+          </ion-card-content>  
+           
+        <!--<ion-item>
+         
+        <ion-label style="color: #000000">Select No of Hours</ion-label>
+        <ion-select style="margin-right :10px;" [(ngModel)]="selectedHRS">
+          <ion-option value="1" selected>1 Hours</ion-option>
+          <ion-option value="2">2 Hours</ion-option>
+          <ion-option value="3">3 Hours</ion-option>
+          <ion-option value="4">4 Hours</ion-option>
+          <ion-option value="5">5 Hours</ion-option>
+          <ion-option value="6">6 Hours</ion-option>
+          <ion-option value="7">7 Hours</ion-option>
+          <ion-option value="8">8 Hours</ion-option>
+          <ion-option value="9">9 Hours</ion-option>
+          <ion-option value="10">10 Hours</ion-option>
+        </ion-select>
+      </ion-item>-->
+          <button ion-button style="width: 100%;" (click)="BookAssorter(selectedHRS,ofcdetails,area,landmark,citypin)">Confirmn Booking</button>
+        </ion-list>
+</ion-card>
+
+</ion-content>

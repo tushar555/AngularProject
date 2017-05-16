@@ -1,0 +1,129 @@
+<ion-header>
+  <ion-navbar color= "header_colour">
+    <ion-buttons end (click)="Signout()">
+      <!--<button ion-button icon-only style="color: #083C5E">
+        <ion-icon name="md-log-out"></ion-icon>
+      </button>-->
+    </ion-buttons>
+    <ion-title >HISTORY</ion-title>
+           <ion-buttons end>
+         <button ion-button icon-only (click)="presentPopover($event)" >
+            <ion-icon name="more"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content style="background: #F6EFE5 ">
+
+   <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+<ion-card *ngFor="let post of history_merchant" padding>
+<table border="0" width="100%" align="center">
+  <tr>
+    <td width="25%" align="center" *ngIf="post.profile_pic==''">
+      <img src="img/not_profile.png" style="width: 70px; height: 70px; border-radius: 50%">
+    </td>
+    <td width="25%" align="center" *ngIf="post.profile_pic!=''">
+      <img src={{post.profile_pic}} style="width: 70px; height: 70px; border-radius: 50%">
+    </td> 
+    <td width="75%" valign="top">
+
+        <table border="0" width="100%">
+          <tr>
+            <td width="30%">
+             <b> Name</b>
+            </td>
+            <td width="60%">
+              : {{post.assorter_name}}
+            </td>
+          </tr>
+          
+          <tr>
+            <td >
+             <b> Categories </b>
+            </td>
+            <td >
+              : {{post.selected_category}}
+            </td>
+          </tr>
+
+           <tr>
+            <td >
+             <b> Total Hours </b>
+            </td>
+            <td >
+              : {{post.final_working_hrs}}
+            </td>
+          </tr>
+
+           <tr>
+            <td >
+             <b> Total Price </b>
+            </td>
+            <td >
+              : {{post.total_price}} 
+            </td>
+          </tr>
+        </table>
+
+    </td>
+  </tr>
+  <br>
+  <tr>
+    <td colspan="2">
+      <b>Email</b>   = {{post.assorter_email}}       
+    </td>
+  </tr>
+<br>
+  <tr>
+    <td colspan="2" align="center">
+      
+        <table border="1" width="98%" bordercolor="#999">
+          <tr>
+            <td width="20%" align="center">
+              <b><b>Price</b></b>
+            </td>
+            <td width="20%" align="center">
+              <b> Booking Hours</b>
+            </td>
+            <td width="20%" align="center">
+              <b>Extra hours</b>
+            </td>
+            <td width="20%" align="center">
+              <b>Start Time</b>
+            </td>
+            <td width="20%" align="center">
+              <b>End Time</b>
+            </td>
+          </tr>
+          <tr>
+            <td width="20%" align="center">
+             {{post.total_price}}
+            </td>
+            <td width="20%" align="center">
+             {{post.selected_hours}}
+            </td>
+            <td width="20%" align="center">
+             {{post.Extra_work_hrs}}
+            </td>
+            <td width="20%" align="center">
+              {{post.time_start}}
+            </td>
+            <td width="20%" align="center">
+              {{post.time_end}}
+            </td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+  <tr>
+</table>
+<br>
+      
+</ion-card>
+
+
+</ion-content>

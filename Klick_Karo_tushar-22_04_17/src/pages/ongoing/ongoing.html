@@ -1,0 +1,163 @@
+<ion-header>
+  <ion-navbar color= "header_colour">
+    <ion-buttons end (click)="Signout()">
+      <!--<button ion-button icon-only style="color: #083C5E">
+        <ion-icon name="md-log-out"></ion-icon>
+      </button>-->
+    </ion-buttons>
+    <ion-title >ONGOING PROCESS</ion-title>
+           <ion-buttons end>
+         <button ion-button icon-only (click)="presentPopover($event)" >
+            <ion-icon name="more"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding style="background: #F6EFE5 ">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div  *ngIf="merchant_bookStatus=='waiting_for_assorter' " > 
+
+    <div *ngFor="let wa of waiting_assorter">
+
+  <table border="0" width="80%" align="center"  >
+    <tr>
+      <td style="height: 100px; background: #f1c40f; border-top-left-radius: 5px;border-top-right-radius: 5px;" align="center" valign="top">
+        <table border="0" align="center" width="50px" height="50px" style="background: #ffffff; border-radius: 50%; margin-top: 5px">
+
+          <tr><td align="center">
+            
+            <img src="img/waiting_yellow.png" style="width: 30px; height: 30px;" >
+            
+          
+          </td></tr></table>
+          <br>
+            <label style="color: #fff">Request send to the assorter</label>
+        
+      </td>
+    </tr>
+    <tr>
+      <td style=" background: #64676b; border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;" align="center">
+        <label style="color: #fff; padding-left: 3px; padding-right: 3px">Awaiting for {{wa.assorter_name}} confirmation.</label>
+      </td>
+    </tr>
+  </table>
+         <br> 
+    </div>
+  <br>
+  </div>
+
+
+  <div *ngIf="merchant_bookStatus == 'booked' || merchant_bookStatus1 == 'booked' ">
+
+    <div *ngFor="let ba of booked_assorter">
+
+    <table border="0" width="90%" align="center"  >
+    <tr>
+      <td style="height: 100px; background: #32C24D; border-top-left-radius: 5px;border-top-right-radius: 5px;" align="center" valign="top">
+        <table border="0" align="center" width="50px" height="50px" style="background: #ffffff; border-radius: 50%; margin-top: 5px">
+
+          <tr><td align="center">
+            
+            <img src="img/waiting.png" style="width: 30px; height: 30px;" >
+            
+          
+          </td></tr></table>
+          <br>
+            <label style="color: #fff">{{ba.assorter_name}} <br>Has accepted your booking</label>
+            <br>
+            <label>&nbsp;</label>
+      </td>
+    </tr>
+    <tr>
+      <td style=" background: #64676b; border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;" align="center">
+        
+
+        <table border="0" width="100%" style="color: #fff" >
+          <tr>
+            <td width="30%" align="center" valign="top">
+              <br>
+              <img src="img/not_profile.png" style="width: 50px; height: 50px;border-radius:50%">
+            </td>
+            <td width="70%">
+            <p>Name : {{ba.assorter_name}}</p>
+            <p>Email : {{ba.assorter_email}}</p>
+            <p>Experience : {{ba.assorter_experience}}</p>
+            <p>Mobile : {{ba.assorter_mobile}}</p>   
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+<br>
+    </div></div>
+  
+<!--<div *ngIf="merchant_bookStatus == 'job_start'">
+      <div *ngFor="let ba of booked_assorter">
+       <b>{{ba.assorter_name}}</b> Has started the job
+       On <b>{{ba.time_start}}</b><br> and calculated end time must be
+        <b>{{ba.time_end}}</b><br>
+      </div>  
+</div>-->
+<div *ngIf="merchant_bookStatus == 'job_start' || merchant_bookStatus1 == 'job_start' && merchant_payment_status!='paynow' ">
+      <div *ngFor="let ba of booked_assorter">
+        <ion-card  padding style="border-radius: 20px;background-color: #e6ffe6;">
+          <ion-card-content style="text-align: justify;">
+            <ion-row>
+              <ion-col col-3>
+                <img src="img/startjob.png" style="height:50px;width: 60px;">
+              </ion-col>
+              <ion-col col-9>
+       <b style="color:#083C5E;">{{ba.assorter_name}}</b> Has started the job
+       On <b style="color:#083C5E;">{{ba.time_start}}</b> and calculated end time must be
+        <b style="color:#083C5E;">{{ba.time_end}}</b>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </div>  
+</div>
+    <div *ngIf="merchant_bookStatus == 'all_booked'">
+
+          <ion-card style="border-radius: 20px;background-color: #e6ffe6;">
+            <ion-card-content>
+               <ion-row>
+                <ion-col col-2> </ion-col>
+                <ion-col col-8>
+           <p>No Ongoing Process for you</p>
+                </ion-col>
+                  <ion-col col-2> </ion-col>
+                 </ion-row>
+            </ion-card-content>
+          </ion-card>
+
+
+  </div> 
+
+      <div *ngIf="merchant_bookStatus == 'paynow' || merchant_payment_status=='paynow'">
+
+          <ion-card style="border-radius: 20px;background-color: #e6ffe6;">
+            <ion-card-content>
+              <ion-row>
+                <ion-col col-3>
+                     <img src="img/warning.png" style="height:50px;width:50px;">
+                </ion-col>
+                <ion-col col-9>
+          <p>Please pay previous payment. Check Payment History section</p>
+                </ion-col>
+              </ion-row>
+            </ion-card-content>
+          </ion-card>
+
+
+  </div>  
+
+  <br>
+  <br>
+  <br>
+</ion-content>

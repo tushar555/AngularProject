@@ -1,0 +1,120 @@
+
+<ion-header>
+
+  <ion-navbar color= "header_colour">
+    <ion-title>Merchant Hiring Updates</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding style="background: #F6EFE5 ">
+
+  <div  *ngIf="loop_merchant_bookStatus=='waiting_for_assorter'" > 
+
+    <div *ngFor="let wa of waiting_assorter">
+
+  <table border="0" width="80%" align="center"  >
+    <tr>
+      <td style="height: 100px; background: #32C24D; border-top-left-radius: 5px;border-top-right-radius: 5px;" align="center" valign="top">
+        <table border="0" align="center" width="50px" height="50px" style="background: #ffffff; border-radius: 50%; margin-top: 5px">
+
+          <tr><td align="center">
+            
+            <img src="img/waiting.png" style="width: 30px; height: 30px;" >
+            
+          
+          </td></tr></table>
+          <br>
+            <label style="color: #fff">Assorter Booked Successfully</label>
+        
+      </td>
+    </tr>
+    <tr>
+      <td style=" background: #64676b; border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;" align="center">
+        <label style="color: #fff; padding-left: 3px; padding-right: 3px">Awaiting for {{wa.assorter_name}} confirmation.</label>
+      </td>
+    </tr>
+  </table>
+    </div>
+  
+  </div>
+<!--<div  *ngIf="loop_merchant_bookStatus=='waiting_for_assorter'"> 
+
+    <table border="0" width="100%" *ngFor="let wa of waiting_assorter">
+
+      <tr>
+        <td align="center"><img src="http://vignette4.wikia.nocookie.net/voltage-inc/images/f/fd/Most_Recent_Game.png" width="50px"  height="50px"></td>
+      </tr> 
+
+      <tr>
+        <td align="center"><br>
+          <p style="font-size: 15px; color:#387EF5; ">Assorter Booked Successfully. Awaiting for {{wa.assorter_name}} confirmation.</p><br>
+        </td>
+      </tr>
+
+    </table>
+    
+  </div>-->
+
+  <div *ngIf="merchant_bookStatus == 'booked'">
+
+    <div *ngFor="let ba of booked_assorter">
+
+    <table border="0" width="90%" align="center"  >
+    <tr>
+      <td style="height: 100px; background: #32C24D; border-top-left-radius: 5px;border-top-right-radius: 5px;" align="center" valign="top">
+        <table border="0" align="center" width="50px" height="50px" style="background: #ffffff; border-radius: 50%; margin-top: 5px">
+
+          <tr><td align="center">
+            <br>
+            <img src="img/waiting.png" style="width: 30px; height: 30px;" >
+            
+          
+          </td></tr></table>
+          <br>
+            <label style="color: #fff">{{ba.assorter_name}} <br>Has accepted your booking</label>
+            <br>
+            <label>&nbsp;</label>
+      </td>
+    </tr>
+    <tr>
+      <td style=" background: #64676b; border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;" align="center">
+        
+
+        <table border="0" width="100%" style="color: #fff" >
+          <tr>
+            <td width="30%" align="center" valign="top">
+              
+              <img src="http://timesofindia.indiatimes.com/video/thumb/50581983.cms" style="width: 50px; height: 50px;border-radius:50%">
+            </td>
+            <td width="70%">
+            <p>Name : {{ba.assorter_name}}</p>
+            <p>Email : {{ba.assorter_email}}</p>
+            <p>Experience : {{ba.assorter_experience}}</p>
+            <p>Mobile : {{ba.assorter_mobile}}</p>
+            
+            <p>Start Time :  {{ba.time_start}}</p>
+            <p>End Time : {{ba.time_end}}</p>
+              
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+
+    </div></div>
+  
+
+     
+
+    <div *ngIf="merchant_bookStatus == 'all_booked'">
+
+          <ion-card>
+          <p>All Are Busyy</p>
+          </ion-card>
+
+
+  </div>  
+</ion-content>
